@@ -1,0 +1,36 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+Log a message
+{% endblock %}
+{% block content %}
+    <form method="POST" class="log-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="submit_button" value="submit_form1" class="save btn btn-default">Log</button>
+    </form>
+    <form method="POST" class="log-form">
+        {% csrf_token %}
+        {{ form2.as_div }}
+        <button type="submit" name="submit_button" value="submit_form2" class="save btn btn-default">Log2</button>
+    </form>
+    <form method="POST" class="log-form">
+        {% csrf_token %}
+
+        {% for field in form2 %}
+            <div class="form-group">
+            {% comment %} {{ field.label_tag }} {% endcomment %}
+            {% if field.errors %}
+                <ul class="errors">
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {{ field.as_widget }}
+            <small id="emailHelp" class="form-text text-muted">{{ field.help_text }}</small>
+            </div>
+        {% endfor %}
+        <button type="submit" name="submit_button" value="submit_form3" class="save btn btn-default">Log3</button>
+    </form>
+    
+{% endblock %}

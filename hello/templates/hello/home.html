@@ -1,0 +1,15 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+    <p>Yo krass, wenn du das liest bist du super informiert.</p>
+    <h2>Messages</h2>
+    {% if message_list %}
+        {% for message in message_list %}
+            {{ message.source }}  |
+            {{ message.message }}  |
+            {{ message.name }}<br>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

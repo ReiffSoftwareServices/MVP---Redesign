@@ -1,0 +1,70 @@
+<div class="container mt-4">
+	<div class="card">
+	  <div class="card-body">
+		<h5 class="card-title">Gerüst-Anmeldung</h5>
+		<h6 class="card-subtitle mb-2 text-muted">ANMELDUNG eines neuen Gerüstes.</h6>
+		<hr class="dropdown-divider">
+		<p class="card-text">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="row">
+					<div class="col">
+						{{ formAnmeldung.Area }}
+						<small class="form-text text-muted">{{ formAnmeldung.Area.help_text }}</small>
+					</div>
+				</div>
+				<hr class="dropdown-divider">
+				<div class="row">
+					<div class="col">
+						{{ formAnmeldung.Installation }}
+						<small class="form-text text-muted">{{ formAnmeldung.Installation.help_text }}</small>
+					</div>
+					<div class="col">
+						{{ formAnmeldung.Equipment }}
+						<small class="form-text text-muted">{{ formAnmeldung.Equipment.help_text }}</small>
+					</div>
+				</div>
+				<hr class="dropdown-divider">
+				<div class="row">
+					<div class="col">
+						{{ formAnmeldung.Level }}
+						<small class="form-text text-muted">{{ formAnmeldung.Level.help_text }}</small>
+					</div>
+					<div class="col">
+						{{ formAnmeldung.Geoposition }}
+						<small class="form-text text-muted">{{ formAnmeldung.Geoposition.help_text }}</small>
+					</div>
+				</div>
+				<hr class="dropdown-divider">
+				<div class="row">	
+					<div class="col">
+						{{ formAnmeldung.Amount }}
+						<small class="form-text text-muted">{{ formAnmeldung.Amount.help_text }}</small>
+					</div>
+					<div class="col text-center">
+						<br>
+						<h6 class="card-subtitle mb-2 text-muted align-middle">Stück à </h6>	
+					</div>				
+					<div class="col">
+						{{ formAnmeldung.Length }}
+						<small class="form-text text-muted">{{ formAnmeldung.Length.help_text }}</small>
+					</div>
+					<div class="col">
+						{{ formAnmeldung.Width }}
+						<small class="form-text text-muted">{{ formAnmeldung.Width.help_text }}</small>
+					</div>
+					<div class="col">
+						{{ formAnmeldung.Height }}
+						<small class="form-text text-muted">{{ formAnmeldung.Height.help_text }}</small>
+					</div>					
+				</div>
+				<hr class="dropdown-divider">
+				{% comment %} {% for element in additionalServices %}
+					{{ element.Name }}
+				{% endfor %} {% endcomment %}
+			  <button type="submit" class="btn btn-secondary" value="submit_formAnmeldung">Gerüst anmelden</button>
+			</form>	
+		</p>
+	  </div>
+	</div>
+</div>
