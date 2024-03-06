@@ -3,7 +3,7 @@
 	  <div class="card-body">
 		<h5 class="card-title">Gerüst-Anmeldung</h5>
 		<h6 class="card-subtitle mb-2 text-muted">ANMELDUNG eines neuen Gerüstes.</h6>
-		<hr class="dropdown-divider">
+		<hr>
 		<p class="card-text">
 			<form method="POST">
 				{% csrf_token %}
@@ -13,7 +13,7 @@
 						<small class="form-text text-muted">{{ formAnmeldung.Area.help_text }}</small>
 					</div>
 				</div>
-				<hr class="dropdown-divider">
+				<hr>
 				<div class="row">
 					<div class="col">
 						{{ formAnmeldung.Installation }}
@@ -24,7 +24,7 @@
 						<small class="form-text text-muted">{{ formAnmeldung.Equipment.help_text }}</small>
 					</div>
 				</div>
-				<hr class="dropdown-divider">
+				<hr>
 				<div class="row">
 					<div class="col">
 						{{ formAnmeldung.Level }}
@@ -35,7 +35,7 @@
 						<small class="form-text text-muted">{{ formAnmeldung.Geoposition.help_text }}</small>
 					</div>
 				</div>
-				<hr class="dropdown-divider">
+				<hr>
 				<div class="row">	
 					<div class="col">
 						{{ formAnmeldung.Amount }}
@@ -58,10 +58,25 @@
 						<small class="form-text text-muted">{{ formAnmeldung.Height.help_text }}</small>
 					</div>					
 				</div>
-				<hr class="dropdown-divider">
-				{% comment %} {% for element in additionalServices %}
-					{{ element.Name }}
-				{% endfor %} {% endcomment %}
+				<hr>
+				
+
+				<div class="input-group mb-3 w-100">
+					{% for element in additionalServices %}
+						<div class="w-100">
+							<div class="input-group-text">
+								<input class="form-check-input mt-0 " type="checkbox" value="" aria-label="Checkbox for following text input">
+								<input type="text" class="form-control" aria-label="Text input with checkbox" disabled readonly placeholder={{ element.Name }}>
+							</div>
+						</div>
+					{% endfor %} 
+				</div>
+				  
+			
+
+
+
+
 			  <button type="submit" class="btn btn-secondary" value="submit_formAnmeldung">Gerüst anmelden</button>
 			</form>	
 		</p>
