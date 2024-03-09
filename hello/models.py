@@ -83,7 +83,7 @@ class Scaffold(models.Model):
      
 class AdditionalServices(models.Model):
     Name= models.CharField(primary_key= True, max_length = 50, verbose_name = 'Zusatzleistung')
-    
+
     class Meta:
         verbose_name_plural= 'Zusatzleistungen'
     
@@ -107,7 +107,7 @@ class ScaffoldPosition(models.Model):
     Logout=models.DateField(default = timezone.now, verbose_name= 'Abmeldedatum', blank = True)
     
     # Additional Services
-    AdditionalServices = models.ManyToManyField(AdditionalServices)
+    AdditionalServices = models.ForeignKey(AdditionalServices, on_delete=models.CASCADE)
     
     
     class Meta:
