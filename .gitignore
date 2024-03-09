@@ -1,2 +1,2 @@
-db.sqlite3
-/hello/migrations/**
+# db.sqlite3
+# /hello/migrations/**
