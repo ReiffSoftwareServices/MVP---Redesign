@@ -1,3 +1,4 @@
 db.sqlite3
 /hello/migrations/**
 /Design/**
+/Design/not used/** */
