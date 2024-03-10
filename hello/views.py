@@ -24,10 +24,16 @@ def runOldVersion(request):
         form = AnmeldungForm(request.POST)
         if form.is_valid():            
             results = form.save()
+            additionalServicesSelected = request.POST.getlist('additionalServiceSelection')
             newScaffoldPosition = ScaffoldPosition()
             newScaffoldPosition.Scaffold = results
             newScaffoldPosition.Version = 0
             newScaffoldPosition.Type = 1
+            newScaffoldPosition.save()   
+            for additionalServiceChoice in additionalServicesSelected:
+                print(additionalServiceChoice)
+                targetItem = AdditionalServices.objects.get(id=additionalServiceChoice)
+                newScaffoldPosition.AdditionalServices.add(targetItem)
             newScaffoldPosition.save()            
     context['formAnmeldung'] = AnmeldungForm()
     return render(request, "hello/index.html", context)

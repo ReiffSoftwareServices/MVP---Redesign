@@ -65,9 +65,8 @@
 					{% for element in additionalServices %}
 						<div class="w-100">
 							<div class="input-group-text">
-								<input class="form-check-input mt-0 " type="checkbox" value="" aria-label="Checkbox for following text input">
-								<input type="text" class="form-control" aria-label="Text input with checkbox" disabled readonly placeholder="{{ element.Name }} ">
-								
+								<input class="form-check-input mt-0 " name="additionalServiceSelection" id="additionalServiceSelection-{{ element.id }}" type="checkbox" value="{{ element.id }}" aria-label="Checkbox for following text input">
+								<input type="text" name="additionalServiceSelectionText" class="form-control" aria-label="Text input with checkbox" disabled readonly placeholder="{{ element.Name }} ">
 							</div>
 						</div>
 					{% endfor %} 

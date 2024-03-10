@@ -114,7 +114,7 @@ class ScaffoldPosition(models.Model):
         verbose_name_plural= 'Gerüstpositionen'
     
     def __str__(self):
-            return '{}, {} - {} {}'.format(self.Scaffold, self.Scaffold.ScaffoldID, SCAFFOLD_POSITION_TYPES[self.Type], self.Version)   
+            return '{}, {} - {} {}'.format(self.Scaffold, self.Scaffold.ScaffoldID, self.Type, self.Version)   
 
     @property
     def TypeString(self):
