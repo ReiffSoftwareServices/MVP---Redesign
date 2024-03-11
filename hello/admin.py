@@ -12,11 +12,11 @@ admin.site.register(Level)
 admin.site.register(Geoposition)
 admin.site.register(Installation)
 
-admin.site.register(Scaffold)
+# admin.site.register(Scaffold)
 admin.site.register(ScaffoldPosition)
 
 admin.site.register(CostPosition)
-admin.site.register(ChosenCostPosition)
+# admin.site.register(ChosenCostPosition)
 admin.site.register(AdditionalServices)
 
 
