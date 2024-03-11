@@ -21,7 +21,7 @@ class Area(models.Model):
         verbose_name_plural= 'Bereiche'
         
     def __str__(self):
-        return '{}'.format(self.Name)
+        return '{} ({} {})'.format(self.Name, self.Contact.Prename, self.Contact.Surname)
 
 class Installation(models.Model):
     Name= models.CharField(max_length = 50, verbose_name = 'Anlage')
