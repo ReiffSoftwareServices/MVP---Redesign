@@ -5,8 +5,8 @@ from django.utils.timezone import datetime
 from django.utils import timezone
 
 from django.shortcuts import redirect
-from hello.forms import AnmeldungForm, ScaffoldLogoutForm
-from hello.models import ScaffoldPosition, AdditionalServices
+from hello.forms import AnmeldungForm, ScaffoldLogoutForm, checkForm
+from hello.models import ScaffoldPosition, AdditionalServices, CostPosition
 
 from django.views.generic import ListView
 
@@ -54,6 +54,7 @@ def registerScaffold(request):
                   
     context['formAnmeldung'] = AnmeldungForm()
     context['formScaffoldLogout'] = ScaffoldLogoutForm()
+    context['formCheck'] = checkForm()
     return render(request, "hello/index.html", context)
         
 def about(request):

@@ -149,9 +149,9 @@ class ChosenCostPosition(models.Model):
     TargetAmount= models.DecimalField(max_digits= 4, decimal_places= 0, blank= True, null= True, verbose_name= 'Plan Anzahl')
     TargetHours= models.DecimalField(max_digits= 4, decimal_places= 0, blank= True, null= True, verbose_name= 'Plan Stunden')
     
-    Length= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'IST Länge')
-    Width= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'IST Breite')
-    Height= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'IST Höhe')
+    Length= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'IST Länge', help_text="Lännge")
+    Width= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'IST Breite', help_text="Breite")
+    Height= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'IST Höhe', help_text="Höhe")
     Amount= models.DecimalField(max_digits= 4, decimal_places= 0, blank= True, null= True, verbose_name= 'IST Anzahl')
     Hours= models.DecimalField(max_digits= 4, decimal_places= 0, blank= True, null= True, verbose_name= 'IST Stunden')
     
