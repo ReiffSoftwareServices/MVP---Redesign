@@ -6,7 +6,7 @@
 		<hr>
 		<p class="card-text">
 			<form method="POST">
-				{% csrf_token %}
+				{% csrf_token %}				
 				<div class="row">
 					<div class="col">
 						{{ formAnmeldung.Area }}
@@ -71,7 +71,13 @@
 						</div>
 					{% endfor %} 
 				</div>
-			  <button type="submit" class="btn btn-secondary" value="submit_formAnmeldung">Gerüst anmelden</button>
+				<div class="row">
+					<div class="col">
+						{{ formAnmeldung.Description }}
+						<small class="form-text text-muted">{{ formAnmeldung.Description.help_text }}</small>
+					</div>
+				</div>
+			  <button type="submit" class="btn btn-secondary" value="submit_formAnmeldung" name="registerScaffold">Gerüst anmelden</button>
 			</form>	
 		</p>
 	  </div>

@@ -61,7 +61,7 @@ class Geoposition(models.Model):
 class Scaffold(models.Model):
     # PK
     ScaffoldID= models.AutoField(primary_key= True, help_text="Die Gerüstnummer wird automatisch erzeugt.")
-    
+    Description= models.TextField(blank= True, null= True, verbose_name= 'Beschreibung', help_text="Füge hier beliebige Notizen hinzu.")
     # FK
     Area= models.ForeignKey(Area, on_delete=models.CASCADE, verbose_name= 'Bereich', blank= True, null= True, help_text="Bereich.")
     Installation= models.ForeignKey(Installation, on_delete=models.CASCADE, verbose_name= 'Anlage', blank= True, null= True, help_text="Anlage.")
@@ -79,7 +79,7 @@ class Scaffold(models.Model):
         verbose_name_plural= 'Gerüste'
         
     def __str__(self):
-            return '({}) - {} {} / {} - {} : {} stk à {}x{}x{}'.format(self.ScaffoldID, self.Area, self.Installation, self.Equipment, self.Geoposition, self.Amount, self.Length, self.Width, self.Height)
+            return '({}) - {} | {} | {} | {} : L{}B{}H{}x{}'.format(self.ScaffoldID, self.Area, self.Installation, self.Equipment, self.Geoposition, self.Length, self.Width, self.Height, self.Amount)
      
 class AdditionalServices(models.Model):
     Name= models.CharField(max_length = 50, verbose_name = 'Zusatzleistung')
@@ -114,7 +114,7 @@ class ScaffoldPosition(models.Model):
         verbose_name_plural= 'Gerüstpositionen'
     
     def __str__(self):
-            return '{}, {} - {} {}'.format(self.Scaffold, self.Scaffold.ScaffoldID, self.Type, self.Version)   
+            return '{}.{} - {}'.format(self.Scaffold.ScaffoldID, self.Version, SCAFFOLD_POSITION_TYPES[self.Type])   
 
     @property
     def TypeString(self):

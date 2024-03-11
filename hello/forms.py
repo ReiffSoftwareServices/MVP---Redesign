@@ -1,12 +1,13 @@
 # from traceback import format_stack
 from django import forms
-from hello.models import Scaffold
+from hello.models import Scaffold, ScaffoldPosition
 
 class AnmeldungForm(forms.ModelForm):
     class Meta:
         model = Scaffold
-        fields = ("Area", "Installation","Equipment","Level","Geoposition", "Length", "Width", "Height", "Amount")
-        widgets = {            
+        fields = ("Description", "Area", "Installation","Equipment","Level","Geoposition", "Length", "Width", "Height", "Amount")
+        widgets = {     
+            'Description': forms.Textarea(attrs={'class':'form-control'}),       
             'Length': forms.NumberInput(attrs={'class':'form-control'}),
             'Width': forms.NumberInput(attrs={'class':'form-control'}),
             'Height': forms.NumberInput(attrs={'class':'form-control'}),
@@ -27,3 +28,7 @@ class AnmeldungForm(forms.ModelForm):
     Equipment = forms.ModelChoiceField(queryset=Scaffold._meta.get_field('Equipment').remote_field.model.objects.all(), empty_label="Equipment auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Equipment des Gerüstes", label="Equipment")
     Level = forms.ModelChoiceField(queryset=Scaffold._meta.get_field('Level').remote_field.model.objects.all(), empty_label="Ebene auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Ebene des Gerüstes", label="Bereich")
     Geoposition = forms.ModelChoiceField(queryset=Scaffold._meta.get_field('Geoposition').remote_field.model.objects.all(), empty_label="Örtlichkeit auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Örtlichkeit des Gerüstes", label="Bereich")
+
+class ScaffoldLogoutForm(forms.Form):
+    scaffoldPositionChoice = forms.ModelChoiceField(queryset=ScaffoldPosition.objects.all(), empty_label="Bereich auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Breich des Gerüstes", label="Gerüste") 
+    

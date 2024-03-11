@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.utils.timezone import datetime
 
 from django.shortcuts import redirect
-from hello.forms import AnmeldungForm
+from hello.forms import AnmeldungForm, ScaffoldLogoutForm
 from hello.models import ScaffoldPosition, AdditionalServices
 
 from django.views.generic import ListView
@@ -15,27 +15,39 @@ def testModelHandling(request):
     return render(request, "hello/test.html", context)
     
 
-def runOldVersion(request):
+def registerScaffold(request):
     # return render(request, "hello/index.html")
     context = {}
     context['datalist'] = ScaffoldPosition.objects.all()
     context['additionalServices']=AdditionalServices.objects.all()
     if request.method == "POST":
-        form = AnmeldungForm(request.POST)
-        if form.is_valid():            
-            results = form.save()
-            additionalServicesSelected = request.POST.getlist('additionalServiceSelection')
-            newScaffoldPosition = ScaffoldPosition()
-            newScaffoldPosition.Scaffold = results
-            newScaffoldPosition.Version = 0
-            newScaffoldPosition.Type = 1
-            newScaffoldPosition.save()   
-            for additionalServiceChoice in additionalServicesSelected:
-                print(additionalServiceChoice)
-                targetItem = AdditionalServices.objects.get(id=additionalServiceChoice)
-                newScaffoldPosition.AdditionalServices.add(targetItem)
-            newScaffoldPosition.save()            
+        if 'registerScaffold' in request.POST:
+            print('register')
+            form = AnmeldungForm(request.POST)
+            if form.is_valid():            
+                results = form.save()
+                additionalServicesSelected = request.POST.getlist('additionalServiceSelection')
+                newScaffoldPosition = ScaffoldPosition()
+                newScaffoldPosition.Scaffold = results
+                newScaffoldPosition.Version = 0
+                newScaffoldPosition.Type = 1
+                newScaffoldPosition.save()   
+                for additionalServiceChoice in additionalServicesSelected:
+                    print(additionalServiceChoice)
+                    targetItem = AdditionalServices.objects.get(id=additionalServiceChoice)
+                    newScaffoldPosition.AdditionalServices.add(targetItem)
+                newScaffoldPosition.save()  
+        elif 'logutScaffold' in request.POST:
+            form = ScaffoldLogoutForm(request.POST)
+            
+            scaffoldToLogout = request.POST.getlist('scaffoldPositionChoice')
+            # ToDo: Hier das Gerüst abmelden
+            # ScaffoldPosition.objects.get(pk=scaffoldToLogout).delete()
+            print(scaffoldToLogout)
+        
+                  
     context['formAnmeldung'] = AnmeldungForm()
+    context['formScaffoldLogout'] = ScaffoldLogoutForm()
     return render(request, "hello/index.html", context)
         
 def about(request):
