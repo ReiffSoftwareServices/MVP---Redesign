@@ -31,7 +31,11 @@ def registerScaffold(request):
                 newScaffoldPosition.Scaffold = results
                 newScaffoldPosition.Version = 0
                 newScaffoldPosition.Type = 1
-                newScaffoldPosition.save()   
+                newScaffoldPosition.save()
+                newScaffoldPosition.SetupDate = request.POST.get('SetupDate')
+                if newScaffoldPosition.SetupDate == "" :
+                    newScaffoldPosition.SetupDate = None
+                newScaffoldPosition.Logout =  None
                 for additionalServiceChoice in additionalServicesSelected:
                     print(additionalServiceChoice)
                     targetItem = AdditionalServices.objects.get(id=additionalServiceChoice)

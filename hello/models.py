@@ -103,8 +103,8 @@ class ScaffoldPosition(models.Model):
     # Data
     Type=models.CharField(max_length=12, choices=SCAFFOLD_POSITION_TYPES, blank = True)
     RegistrationDate=models.DateField(default = timezone.now, verbose_name= 'Anmeldedatum')
-    SetupDate=models.DateField(default = timezone.now, verbose_name= 'Aufbaudatum', blank = True)
-    Logout=models.DateField(default = timezone.now, verbose_name= 'Abmeldedatum', blank = True)
+    SetupDate=models.DateField(default = timezone.now, verbose_name= 'Aufbaudatum', blank = True, null= True)
+    Logout=models.DateField(default = timezone.now, verbose_name= 'Abmeldedatum', blank = True, null= True)
     
     # Additional Services
     AdditionalServices = models.ManyToManyField(AdditionalServices)
