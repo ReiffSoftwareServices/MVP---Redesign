@@ -2,6 +2,7 @@
 # from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils.timezone import datetime
+from django.utils import timezone
 
 from django.shortcuts import redirect
 from hello.forms import AnmeldungForm, ScaffoldLogoutForm
@@ -43,11 +44,11 @@ def registerScaffold(request):
                 newScaffoldPosition.save()  
         elif 'logutScaffold' in request.POST:
             form = ScaffoldLogoutForm(request.POST)
-            
-            scaffoldToLogout = request.POST.getlist('scaffoldPositionChoice')
+            scaffoldToLogout = request.POST.get('scaffoldPositionChoice')
             # ToDo: Hier das Gerüst abmelden
-            # ScaffoldPosition.objects.get(pk=scaffoldToLogout).delete()
-            print(scaffoldToLogout)
+            targetScaffoldPosition = ScaffoldPosition.objects.get(id=scaffoldToLogout)
+            targetScaffoldPosition.Logout = request.POST.get('LogoutDate')
+            targetScaffoldPosition.save()
         
                   
     context['formAnmeldung'] = AnmeldungForm()

@@ -6,18 +6,18 @@
             <p class="card-text">
                 <div class="list-group">
                     {% for element in datalist %}
-                        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{ element.TypeString }}: {{ element.Scaffold.ScaffoldID }}.{{ element.Version }}</h5>
-                            <small>Anmeldung am {{ element.RegistrationDate }}</small>
-                        </div>
-                        <p class="mb-1">{{ element.Scaffold.Area }} - {{ element.Scaffold.Installation }} - {{ element.Scaffold.Equipment }}</p>
-                        <p class="mb-1">Ebene {{ element.Scaffold.Level }} | Örtlichkeit {{ element.Scaffold.Geoposition }} </p>
-                        <small>Aufmaß:  {{ element.Scaffold.Length }} x {{ element.Scaffold.Width }} x {{ element.Scaffold.Height }}</small>
-                        <br><small>Anzahl: {{ element.Scaffold.Amount }} Stk </small>                         
-                        </a>
+                            <a href="#" class="list-group-item list-group-item-action" aria-current="true" style="opacity: {{ element.Logout|yesno:'0.1,1' }};">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{ element.TypeString }}: {{ element.Scaffold.ScaffoldID }}.{{ element.Version }}</h5>
+                                    <small>Anmeldung am {{ element.RegistrationDate }}</small>
+                                </div>
+                                <p class="mb-1">{{ element.Scaffold.Area }} - {{ element.Scaffold.Installation }} - {{ element.Scaffold.Equipment }}</p>
+                                <p class="mb-1">Ebene {{ element.Scaffold.Level }} | Örtlichkeit {{ element.Scaffold.Geoposition }} </p>
+                                <small>Aufmaß:  {{ element.Scaffold.Length }} x {{ element.Scaffold.Width }} x {{ element.Scaffold.Height }}</small>
+                                <br><small>Anzahl: {{ element.Scaffold.Amount }} Stk </small>                         
+                            </a>
                     {% endfor %}
-                  </div>
+                </div>
             </p>
         </div>
     </div>
