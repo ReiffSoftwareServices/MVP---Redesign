@@ -107,7 +107,7 @@ class ScaffoldPosition(models.Model):
     Logout=models.DateField(default = timezone.now, verbose_name= 'Abmeldedatum', blank = True, null= True)
     
     # Additional Services
-    AdditionalServices = models.ManyToManyField(AdditionalServices)
+    AdditionalServices = models.ManyToManyField(AdditionalServices, blank = True, null= True)
     
     
     class Meta:
