@@ -25,7 +25,7 @@ class AnmeldungForm(forms.ModelForm):
             # 'Aufbaudatum': forms.SelectDateWidget(attrs={'class':'form-control'}),
             # 'Abmeldedatum': forms.SelectDateWidget(attrs={'class':'form-control'})
         }
-    Area = forms.ModelChoiceField(queryset=Scaffold._meta.get_field('Area').remote_field.model.objects.all(), empty_label="Bereich auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Breich des Gerüstes", label="Bereich")
+    Area = forms.ModelChoiceField(queryset=Scaffold._meta.get_field('Area').remote_field.model.objects.all(), empty_label="Bereich auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Bereich des Gerüstes", label="Bereich")
     Installation = forms.ModelChoiceField(queryset=Scaffold._meta.get_field('Installation').remote_field.model.objects.all(), empty_label="Anlage auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Anlage des Gerüstes", label="Bereich")
     Equipment = forms.ModelChoiceField(queryset=Scaffold._meta.get_field('Equipment').remote_field.model.objects.all(), empty_label="Equipment auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Equipment des Gerüstes", label="Equipment")
     Level = forms.ModelChoiceField(queryset=Scaffold._meta.get_field('Level').remote_field.model.objects.all(), empty_label="Ebene auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Ebene des Gerüstes", label="Bereich")

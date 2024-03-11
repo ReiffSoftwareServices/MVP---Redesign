@@ -2,7 +2,7 @@
 	<div class="card">
 	  <div class="card-body">
 		<h5 class="card-title">Gerüst-Anmeldung</h5>
-		<h6 class="card-subtitle mb-2 text-muted">ANMELDUNG eines neuen Gerüstes.</h6>
+		<h6 class="card-subtitle mb-2 text-muted">Anmeldedatum: {{ today|date:'d.m.Y' }}</h6>
 		<hr>
 		<p class="card-text">
 			<form method="POST">
@@ -10,41 +10,33 @@
 				<div class="row">
 					<div class="col">
 						{{ formAnmeldung.Area }}
-						<small class="form-text text-muted">{{ formAnmeldung.Area.help_text }}</small>
+						{% comment %} <small class="form-text text-muted">{{ formAnmeldung.Area.help_text }}</small> {% endcomment %}
 					</div>
 				</div>
-				<hr>
+				<br>
 				<div class="row">
 					<div class="col">
 						{{ formAnmeldung.Installation }}
-						<small class="form-text text-muted">{{ formAnmeldung.Installation.help_text }}</small>
+						{% comment %} <small class="form-text text-muted">{{ formAnmeldung.Installation.help_text }}</small> {% endcomment %}
 					</div>
 					<div class="col">
 						{{ formAnmeldung.Equipment }}
-						<small class="form-text text-muted">{{ formAnmeldung.Equipment.help_text }}</small>
+						{% comment %} <small class="form-text text-muted">{{ formAnmeldung.Equipment.help_text }}</small> {% endcomment %}
 					</div>
 				</div>
-				<hr>
+				<br>
 				<div class="row">
 					<div class="col">
 						{{ formAnmeldung.Level }}
-						<small class="form-text text-muted">{{ formAnmeldung.Level.help_text }}</small>
+						{% comment %} <small class="form-text text-muted">{{ formAnmeldung.Level.help_text }}</small> {% endcomment %}
 					</div>
 					<div class="col">
 						{{ formAnmeldung.Geoposition }}
-						<small class="form-text text-muted">{{ formAnmeldung.Geoposition.help_text }}</small>
+						{% comment %} <small class="form-text text-muted">{{ formAnmeldung.Geoposition.help_text }}</small> {% endcomment %}
 					</div>
 				</div>
 				<hr>
-				<div class="row">	
-					<div class="col">
-						{{ formAnmeldung.Amount }}
-						<small class="form-text text-muted">{{ formAnmeldung.Amount.help_text }}</small>
-					</div>
-					<div class="col text-center">
-						<br>
-						<h6 class="card-subtitle mb-2 text-muted align-middle">Stück à </h6>	
-					</div>				
+				<div class="row">					
 					<div class="col">
 						{{ formAnmeldung.Length }}
 						<small class="form-text text-muted">{{ formAnmeldung.Length.help_text }}</small>

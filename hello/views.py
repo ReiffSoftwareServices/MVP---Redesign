@@ -21,6 +21,7 @@ def registerScaffold(request):
     context = {}
     context['datalist'] = ScaffoldPosition.objects.all()
     context['additionalServices']=AdditionalServices.objects.all()
+    context['today']=timezone.now()
     if request.method == "POST":
         if 'registerScaffold' in request.POST:
             print('register')

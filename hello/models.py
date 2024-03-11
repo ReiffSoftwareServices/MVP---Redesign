@@ -70,9 +70,9 @@ class Scaffold(models.Model):
     Geoposition= models.ForeignKey(Geoposition, on_delete=models.CASCADE, verbose_name= 'Örtlichkeit', help_text="Örtlichkeit")
     
     # Plan Data
-    Length= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'Plan Länge', help_text="Länge in m²")
-    Width= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'Plan Breite', help_text="Breite in m²")
-    Height= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'Plan Höhe', help_text="Höhe in m²")
+    Length= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'Plan Länge', help_text="Länge in m")
+    Width= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'Plan Breite', help_text="Breite in m")
+    Height= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'Plan Höhe', help_text="Höhe in m")
     Amount= models.DecimalField(max_digits= 4, decimal_places= 0, blank= True, null= True, verbose_name= 'Plan Anzahl', help_text="Anzahl der Gerüste")
     
     class Meta:
