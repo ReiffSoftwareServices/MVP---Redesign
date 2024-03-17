@@ -14,7 +14,13 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-    
+
+def aufmass(request, scaffoldID):
+    context = {}
+    context['scaffoldID'] = scaffoldID
+    context['formCheck'] = checkForm()
+    return render(request,'hello/test.html', context)
+       
 def testModelHandling(request):
     context = {}
     context['datalist'] = ScaffoldPosition.objects.all()
@@ -59,7 +65,17 @@ def registerScaffold(request):
                     print(additionalServiceChoice)
                     targetItem = AdditionalServices.objects.get(id=additionalServiceChoice)
                     newScaffoldPosition.AdditionalServices.add(targetItem)
-                newScaffoldPosition.save()  
+                newScaffoldPosition.save()
+                message = "Es wurde ein neues Gerüst angemeldet. Bla bla. Hier bitte Aufmaß eingeben: " + request.META['HTTP_HOST'] + request.META['PATH_INFO'] + reverse('aufmass',args=[newScaffoldPosition.Scaffold.ScaffoldID])
+                email = "jan.j.reiff@gmail.com"
+                name = "Neue Gerüstanmeldung!"
+                send_mail(
+                    name,
+                    message,
+                    'settings.EMAIL_HOST_USER',
+                    [email,'christoph.lehnertz@web.de'],
+                    fail_silently=False
+                )  
         elif 'logutScaffold' in request.POST:
             form = ScaffoldLogoutForm(request.POST)
             scaffoldToLogout = request.POST.get('scaffoldPositionChoice')

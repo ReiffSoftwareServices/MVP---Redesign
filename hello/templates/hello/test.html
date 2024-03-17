@@ -3,8 +3,9 @@
 {% block title %}Indexseite{% endblock %}
 
 {% block content %}
-  <h1>Willkommen auf der Startseite</h1>
-  <p>Dies ist der Inhalt der Startseite.</p>
+  <h1>{% if scaffoldID %}{{ scaffoldID }}{% endif %}.0 - Aufmaß Eingabe</h1>
+  <p>Bitte gib dein Aufmaß ein für das Gerüst {% if scaffoldID %}{{ scaffoldID }}{% endif %}.0 ein.</p>
+  {% include 'hello/interface/pages/freigabe.html' %}
 
-  <ol id="todo-list" hx-get="http://127.0.0.1:8000/api" hx-trigger="load"></ol>
+  {% comment %} <ol id="todo-list" hx-get="http://127.0.0.1:8000/api" hx-trigger="load"></ol> {% endcomment %}
 {% endblock %}
