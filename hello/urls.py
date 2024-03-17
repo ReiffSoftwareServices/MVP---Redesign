@@ -8,8 +8,7 @@ urlpatterns = [
     path("contact/", views.contact, name="contact"),
     path("", views.registerScaffold, name="mvp"),
     path("test/", views.testModelHandling, name="testModelHandling"),
-    
-    
+    path("mail/", views.testMail, name = "testMail"),    
 ]
 
 urlpatterns += staticfiles_urlpatterns()

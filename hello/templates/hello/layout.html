@@ -5,14 +5,16 @@
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'hello/site.css' %}"/>
+    <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
 <div class="navbar">
-    <a href="{% url 'home' %}" class="navbar-brand">Home</a>
+    {% comment %} <a href="{% url 'home' %}" class="navbar-brand">Home</a>
     <a href="{% url 'about' %}" class="navbar-item">About</a>
     <a href="{% url 'contact' %}" class="navbar-item">Contact</a>
-    <a href="{% url 'log' %}" class="navbar-item">Log Message</a>
+    <a href="{% url 'log' %}" class="navbar-item">Log Message</a> {% endcomment %}
 </div>
 
 <div class="body-content">

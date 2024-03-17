@@ -10,12 +10,29 @@ from hello.models import ScaffoldPosition, AdditionalServices, CostPosition
 
 from django.views.generic import ListView
 
+from django.core.mail import send_mail
+from django.conf import settings
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+    
 def testModelHandling(request):
     context = {}
     context['datalist'] = ScaffoldPosition.objects.all()
     return render(request, "hello/test.html", context)
     
-
+def testMail(request):
+    message = "testmessage"
+    email = "jan.j.reiff@gmail.com"
+    name = "Jan Reiff"
+    send_mail(
+        name,
+        message,
+        'settings.EMAIL_HOST_USER',
+        [email],
+        fail_silently=False
+    )
+    return HttpResponseRedirect(reverse('mvp'))
+    
 def registerScaffold(request):
     # return render(request, "hello/index.html")
     context = {}
