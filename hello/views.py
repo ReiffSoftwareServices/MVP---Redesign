@@ -67,6 +67,7 @@ def registerScaffold(request):
                     newScaffoldPosition.AdditionalServices.add(targetItem)
                 newScaffoldPosition.save()
                 message = "Es wurde ein neues Gerüst angemeldet. Bla bla. Hier bitte Aufmaß eingeben: " + request.META['HTTP_HOST'] + request.META['PATH_INFO'] + reverse('aufmass',args=[newScaffoldPosition.Scaffold.ScaffoldID])
+                message = message.replace("//", "/")
                 email = "jan.j.reiff@gmail.com"
                 name = "Neue Gerüstanmeldung!"
                 send_mail(
