@@ -14,6 +14,10 @@
 				</div>
 				<div class="row">
 					<div class="col">
+						{{ formScaffoldLogout.contactLogout }}
+						{% comment %} <small class="form-text text-muted">...</small> {% endcomment %}
+					</div>
+					<div class="col">
 						{{ formScaffoldLogout.LogoutDate }}
 						{% comment %} <small class="form-text text-muted">...</small> {% endcomment %}
 					</div>
@@ -23,8 +27,7 @@
 					{% for element in datalist %}
 						<option value ="{{ element.id }}">{{ element }}</option>
 					{% endfor %}
-				</select> {% endcomment %}
-				
+				</select> {% endcomment %}				
 				<button type="submit" class="btn btn-secondary" name="logutScaffold">Gerüst abmelden</button>
 			</form>	
 		</p>

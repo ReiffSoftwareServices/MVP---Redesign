@@ -105,6 +105,7 @@ class ScaffoldPosition(models.Model):
     RegistrationDate=models.DateField(default = timezone.now, verbose_name= 'Anmeldedatum')
     SetupDate=models.DateField(default = timezone.now, verbose_name= 'Aufbaudatum', blank = True, null= True)
     Logout=models.DateField(default = timezone.now, verbose_name= 'Abmeldedatum', blank = True, null= True)
+    LogoutContact= models.ForeignKey(Contact, on_delete=models.CASCADE, blank = True, verbose_name= 'Abmelder')
     
     # Additional Services
     AdditionalServices = models.ManyToManyField(AdditionalServices, blank = True)

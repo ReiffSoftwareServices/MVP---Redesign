@@ -2,7 +2,7 @@
 import datetime
 from logging import PlaceHolder
 from django import forms
-from hello.models import Scaffold, ScaffoldPosition, ChosenCostPosition, CostPosition
+from hello.models import Scaffold, ScaffoldPosition, ChosenCostPosition, CostPosition, Contact
 
 class AnmeldungForm(forms.ModelForm):
     class Meta:
@@ -34,8 +34,10 @@ class AnmeldungForm(forms.ModelForm):
     SetupDate = forms.DateField(required=False, widget=forms.DateInput(attrs={'class':'form-control', 'type': 'date'}))
     
 class ScaffoldLogoutForm(forms.Form):
+    contactLogout = forms.ModelChoiceField(queryset=Contact.objects.all(),empty_label = "Abmelder auswählen .." , widget=forms.Select(attrs={'class':'form-control'}), help_text="Abmelder", label="Abmelder")
     scaffoldPositionChoice = forms.ModelChoiceField(queryset=ScaffoldPosition.objects.filter(Logout__isnull=True), empty_label="Gerüst zur Abmeldung auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Breich des Gerüstes", label="Gerüste") 
     LogoutDate = forms.DateField(required=False, initial=datetime.date.today().strftime('%Y-%m-%d'),  widget=forms.DateInput(attrs={'class':'form-control', 'type': 'date'}))
+    
     
 class checkForm(forms.ModelForm):
     class Meta:

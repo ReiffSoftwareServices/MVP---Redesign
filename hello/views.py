@@ -83,6 +83,7 @@ def registerScaffold(request):
             # ToDo: Hier das Gerüst abmelden
             targetScaffoldPosition = ScaffoldPosition.objects.get(id=scaffoldToLogout)
             targetScaffoldPosition.Logout = request.POST.get('LogoutDate')
+            targetScaffoldPosition.LogoutContact = request.Post.get('contactLogout')
             targetScaffoldPosition.save()
         
                   
