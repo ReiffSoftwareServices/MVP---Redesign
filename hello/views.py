@@ -6,7 +6,7 @@ from django.utils import timezone
 
 from django.shortcuts import redirect
 from hello.forms import AnmeldungForm, ScaffoldLogoutForm, checkForm
-from hello.models import ScaffoldPosition, AdditionalServices, CostPosition
+from hello.models import ScaffoldPosition, AdditionalServices, CostPosition, Contact
 
 from django.views.generic import ListView
 
@@ -83,7 +83,8 @@ def registerScaffold(request):
             # ToDo: Hier das Gerüst abmelden
             targetScaffoldPosition = ScaffoldPosition.objects.get(id=scaffoldToLogout)
             targetScaffoldPosition.Logout = request.POST.get('LogoutDate')
-            targetScaffoldPosition.LogoutContact = request.Post.get('contactLogout')
+            targetContactId = request.POST.get('contactLogout') 
+            targetScaffoldPosition.LogoutContact = Contact.objects.get(id=targetContactId)
             targetScaffoldPosition.save()
         
                   
