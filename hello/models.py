@@ -57,6 +57,33 @@ class Geoposition(models.Model):
     
     def __str__(self):
             return '{}'.format(self.Name)
+
+class extraInfo1(models.Model):
+    Name= models.CharField(max_length = 50, verbose_name = 'Koordinate')
+    
+    class Meta:
+        verbose_name_plural= 'Koordinaten'
+    
+    def __str__(self):
+            return '{}'.format(self.Name)
+        
+class extraInfo2(models.Model):
+    Name= models.CharField(max_length = 50, verbose_name = 'Reserve1')
+    
+    class Meta:
+        verbose_name_plural= 'Reserven1'
+    
+    def __str__(self):
+            return '{}'.format(self.Name)
+
+class extraInfo3(models.Model):
+    Name= models.CharField(max_length = 50, verbose_name = 'Reserve2')
+    
+    class Meta:
+        verbose_name_plural= 'Reserven2'
+    
+    def __str__(self):
+            return '{}'.format(self.Name)
                 
 class Scaffold(models.Model):
     # PK
@@ -67,7 +94,10 @@ class Scaffold(models.Model):
     Installation= models.ForeignKey(Installation, on_delete=models.CASCADE, verbose_name= 'Anlage', blank= True, null= True, help_text="Anlage.")
     Equipment= models.ForeignKey(Equipment, on_delete=models.CASCADE, verbose_name= 'Equipment', blank= True, null= True, help_text="Equipment.")
     Level= models.ForeignKey(Level, on_delete=models.CASCADE, verbose_name= 'Ebene', blank= True, null= True, help_text="Level")
-    Geoposition= models.ForeignKey(Geoposition, on_delete=models.CASCADE, verbose_name= 'Örtlichkeit', help_text="Örtlichkeit")
+    Geoposition= models.ForeignKey(Geoposition, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Örtlichkeit', help_text="Örtlichkeit")
+    extraInfo1= models.ForeignKey(extraInfo1, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Zusatzinfo', help_text="Zusatzinfo")
+    extraInfo2= models.ForeignKey(extraInfo2, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Zusatzinfo', help_text="Zusatzinfo")
+    extraInfo3= models.ForeignKey(extraInfo3, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Zusatzinfo', help_text="Zusatzinfo")
     
     # Plan Data
     Length= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'Plan Länge', help_text="Länge in m")

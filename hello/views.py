@@ -86,6 +86,13 @@ def registerScaffold(request):
             targetContactId = request.POST.get('contactLogout') 
             targetScaffoldPosition.LogoutContact = Contact.objects.get(id=targetContactId)
             targetScaffoldPosition.save()
+        elif 'checkScaffold' in request.POST:
+            form_data = request.POST
+            selectedScaffold = form_data.get('scaffoldPositionChoice')
+            print(selectedScaffold)
+            valuesSelected = form_data.getlist('costPositions')
+            for name in valuesSelected:
+                print(name)
         
                   
     context['formAnmeldung'] = AnmeldungForm()
