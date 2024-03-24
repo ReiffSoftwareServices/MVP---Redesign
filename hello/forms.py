@@ -11,10 +11,10 @@ class AnmeldungForm(forms.ModelForm):
         fields = ("Description", "Area", "Installation","Equipment","Level","Geoposition", "Length", "Width", "Height", "Amount")
         widgets = {     
             'Description': forms.Textarea(attrs={'class':'form-control'}),       
-            'Length': forms.NumberInput(attrs={'class':'form-control'}),
-            'Width': forms.NumberInput(attrs={'class':'form-control'}),
-            'Height': forms.NumberInput(attrs={'class':'form-control'}),
-            'Amount': forms.NumberInput(attrs={'class':'form-control'}),          
+            'Length': forms.NumberInput(attrs={'class':'form-control volume-parameter'}),
+            'Width': forms.NumberInput(attrs={'class':'form-control volume-parameter'}),
+            'Height': forms.NumberInput(attrs={'class':'form-control volume-parameter'}),
+            'Amount': forms.NumberInput(attrs={'class':'form-control volume-parameter'}),          
             # 'Length': forms.Select(attrs={'class':'form-control col-sm'}),
             # 'Kunde': forms.Select(attrs={'class':'form-control'}),
             # 'Ansprechpartner': forms.Select(attrs={'class':'form-control'}),
