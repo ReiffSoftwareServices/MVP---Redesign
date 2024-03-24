@@ -59,28 +59,28 @@ class Geoposition(models.Model):
             return '{}'.format(self.Name)
 
 class extraInfo1(models.Model):
-    Name= models.CharField(max_length = 50, verbose_name = 'Koordinate')
+    Name= models.CharField(max_length = 50, verbose_name = 'Bauteil')
+    
+    class Meta:
+        verbose_name_plural= 'Bauteile'
+    
+    def __str__(self):
+            return '{}'.format(self.Name)
+        
+class extraInfo2(models.Model):
+    Name= models.CharField(max_length = 50, verbose_name = 'Koordinaten')
     
     class Meta:
         verbose_name_plural= 'Koordinaten'
     
     def __str__(self):
             return '{}'.format(self.Name)
-        
-class extraInfo2(models.Model):
-    Name= models.CharField(max_length = 50, verbose_name = 'Reserve1')
-    
-    class Meta:
-        verbose_name_plural= 'Reserven1'
-    
-    def __str__(self):
-            return '{}'.format(self.Name)
 
 class extraInfo3(models.Model):
-    Name= models.CharField(max_length = 50, verbose_name = 'Reserve2')
+    Name= models.CharField(max_length = 50, verbose_name = 'Innengerüst')
     
     class Meta:
-        verbose_name_plural= 'Reserven2'
+        verbose_name_plural= 'Innengerüste'
     
     def __str__(self):
             return '{}'.format(self.Name)
