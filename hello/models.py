@@ -59,19 +59,19 @@ class Geoposition(models.Model):
             return '{}'.format(self.Name)
 
 class extraInfo1(models.Model):
-    Name= models.CharField(max_length = 50, verbose_name = 'Bauteil')
+    Name= models.CharField(max_length = 50, verbose_name = 'Koordinate')
     
     class Meta:
-        verbose_name_plural= 'Bauteile'
+        verbose_name_plural= 'Koordinaten'
     
     def __str__(self):
             return '{}'.format(self.Name)
         
 class extraInfo2(models.Model):
-    Name= models.CharField(max_length = 50, verbose_name = 'Koordinaten')
+    Name= models.CharField(max_length = 50, verbose_name = 'Bauteil')
     
     class Meta:
-        verbose_name_plural= 'Koordinaten'
+        verbose_name_plural= 'Bauteile'
     
     def __str__(self):
             return '{}'.format(self.Name)
@@ -95,8 +95,8 @@ class Scaffold(models.Model):
     Equipment= models.ForeignKey(Equipment, on_delete=models.CASCADE, verbose_name= 'Equipment', blank= True, null= True, help_text="Equipment.")
     Level= models.ForeignKey(Level, on_delete=models.CASCADE, verbose_name= 'Ebene', blank= True, null= True, help_text="Level")
     Geoposition= models.ForeignKey(Geoposition, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Örtlichkeit', help_text="Örtlichkeit")
-    extraInfo1= models.ForeignKey(extraInfo1, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Bauteil', help_text="Bauteil")
-    extraInfo2= models.ForeignKey(extraInfo2, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Koordinaten', help_text="Koordinaten")
+    extraInfo1= models.ForeignKey(extraInfo1, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Koordinate', help_text="Koordinate")
+    extraInfo2= models.ForeignKey(extraInfo2, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Bauteil', help_text="Bauteil")
     extraInfo3= models.ForeignKey(extraInfo3, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Innengerüst', help_text="Innengerüst")
     
     # Plan Data
@@ -194,8 +194,7 @@ class ChosenCostPosition(models.Model):
 
     def __str__(self):
             return '{}'.format(self.CostPosition)
-        
-
+    
 
 
 

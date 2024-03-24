@@ -6,89 +6,47 @@
 		<p class="card-text">
 			<form method="POST">
 			{% csrf_token %}
-				<div class="row">
-					<div class="col">
-						{{ formCheck.scaffoldPositionChoice }}
-						{% comment %} <small class="form-text text-muted">{{ formCheck.scaffoldPositionChoice.help_text }}</small> {% endcomment %}
+				<div id="container">
+					<div class="row">
+						<div class="col">
+							{{ formCheck.scaffoldPositionChoice }}
+							{% comment %} <small class="form-text text-muted">{{ formCheck.scaffoldPositionChoice.help_text }}</small> {% endcomment %}
+						</div>
 					</div>
-				</div>
+					<br>
+					<hr>
+
+					<div class="cost-position-container">
+						<div class="row">
+							<div class="col">
+								{{ formCheck.costPositions }}
+								<br>
+								{% comment %} <small class="form-text text-muted">{{ formCheck.costPositions.help_text }}</small> {% endcomment %}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								{{ formCheck.Length }}
+								<small class="form-text text-muted">{{ formCheck.Length.help_text }}</small>
+							</div>
+							<div class="col">
+								{{ formCheck.Width }}
+								<small class="form-text text-muted">{{ formCheck.Width.help_text }}</small>
+							</div>
+							<div class="col">
+								{{ formCheck.Height }}
+								<small class="form-text text-muted">{{ formCheck.Height.help_text }}</small>
+							</div>
+						</div>
+						<hr>
+					</div>
+				</div>			
+				<button class="btn btn-success .col-md-offset-4" id="add-position" type="button">
+					<i class="fas fa-plus"></i> Neue Position hinzufügen
+				</button>
 				<br>
 				<hr>
-
-				
-					<div class="row">
-						<div class="col">
-							{{ formCheck.costPositions }}
-							<br>
-							{% comment %} <small class="form-text text-muted">{{ formCheck.costPositions.help_text }}</small> {% endcomment %}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							{{ formCheck.Length }}
-							<small class="form-text text-muted">{{ formCheck.Length.help_text }}</small>
-						</div>
-						<div class="col">
-							{{ formCheck.Width }}
-							<small class="form-text text-muted">{{ formCheck.Width.help_text }}</small>
-						</div>
-						<div class="col">
-							{{ formCheck.Height }}
-							<small class="form-text text-muted">{{ formCheck.Height.help_text }}</small>
-						</div>
-					</div>
-					
-					<hr>
-
-				
-					<div class="row">
-						<div class="col">
-							{{ formCheck.costPositions }}
-							<br>
-							{% comment %} <small class="form-text text-muted">{{ formCheck.costPositions.help_text }}</small> {% endcomment %}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							{{ formCheck.Length }}
-							<small class="form-text text-muted">{{ formCheck.Length.help_text }}</small>
-						</div>
-						<div class="col">
-							{{ formCheck.Width }}
-							<small class="form-text text-muted">{{ formCheck.Width.help_text }}</small>
-						</div>
-						<div class="col">
-							{{ formCheck.Height }}
-							<small class="form-text text-muted">{{ formCheck.Height.help_text }}</small>
-						</div>
-					</div>
-
-					<hr>
-
-				
-					<div class="row">
-						<div class="col">
-							{{ formCheck.costPositions }}
-							<br>
-							{% comment %} <small class="form-text text-muted">{{ formCheck.costPositions.help_text }}</small> {% endcomment %}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							{{ formCheck.Length }}
-							<small class="form-text text-muted">{{ formCheck.Length.help_text }}</small>
-						</div>
-						<div class="col">
-							{{ formCheck.Width }}
-							<small class="form-text text-muted">{{ formCheck.Width.help_text }}</small>
-						</div>
-						<div class="col">
-							{{ formCheck.Height }}
-							<small class="form-text text-muted">{{ formCheck.Height.help_text }}</small>
-						</div>
-					</div>
-					<hr>
-			  <button type="submit" class="btn btn-secondary" name="checkScaffold">Speichern</button>
+			  	<button type="submit" class="btn btn-secondary" name="checkScaffold">Speichern</button>
 			</form>	
 		</p>
 	  </div>

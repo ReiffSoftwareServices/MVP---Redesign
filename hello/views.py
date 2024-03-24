@@ -6,7 +6,7 @@ from django.utils import timezone
 
 from django.shortcuts import redirect
 from hello.forms import AnmeldungForm, ScaffoldLogoutForm, checkForm
-from hello.models import ScaffoldPosition, AdditionalServices, CostPosition, Contact
+from hello.models import ScaffoldPosition, AdditionalServices, CostPosition, Contact, ChosenCostPosition
 
 from django.views.generic import ListView
 
@@ -89,10 +89,21 @@ def registerScaffold(request):
         elif 'checkScaffold' in request.POST:
             form_data = request.POST
             selectedScaffold = form_data.get('scaffoldPositionChoice')
-            print(selectedScaffold)
+            print(ScaffoldPosition.objects.get(id=selectedScaffold))
             valuesSelected = form_data.getlist('costPositions')
-            for name in valuesSelected:
-                print(name)
+            selectedLength = form_data.getlist('Length')
+            selectedWidth = form_data.getlist('Width')
+            selectedHeight = form_data.getlist('Height')
+            for index, selectedCostPosition in enumerate(valuesSelected):
+                print("position in array: " + str(index))
+                targetChosenCostPosition = ChosenCostPosition()
+                targetChosenCostPosition.ScaffoldPosition = ScaffoldPosition.objects.get(id=selectedScaffold)
+                targetChosenCostPosition.CostPosition = CostPosition.objects.get(id=selectedCostPosition)
+                targetChosenCostPosition.Length = int(selectedLength[index] or "0")
+                targetChosenCostPosition.Width = int(selectedWidth[index] or "0")
+                targetChosenCostPosition.Height = int(selectedHeight[index] or "0")
+                print(CostPosition.objects.get(id=selectedCostPosition))
+                targetChosenCostPosition.save()
         
                   
     context['formAnmeldung'] = AnmeldungForm()
