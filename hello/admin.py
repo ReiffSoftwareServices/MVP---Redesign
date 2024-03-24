@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Contact, Area, Equipment, Level, Geoposition, Installation, Scaffold, ScaffoldPosition, CostPosition, AdditionalServices, ChosenCostPosition
+from .models import Contact, Area, Equipment, Level, Geoposition, Installation, Scaffold, ScaffoldPosition, CostPosition, AdditionalServices, ChosenCostPosition, extraInfo1, extraInfo2, extraInfo3
 
 admin.site.register(Contact)
 
@@ -19,6 +19,9 @@ admin.site.register(CostPosition)
 # admin.site.register(ChosenCostPosition)
 admin.site.register(AdditionalServices)
 
+admin.site.register(extraInfo1)
+admin.site.register(extraInfo2)
+admin.site.register(extraInfo3)
 
 # admin.site.register(Ansprechpartner)
 # admin.site.register(Inventar)
