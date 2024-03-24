@@ -74,7 +74,7 @@ def registerScaffold(request):
                     name,
                     message,
                     'settings.EMAIL_HOST_USER',
-                    [email,'christoph.lehnertz@web.de'],
+                    [email,'info@treverer-geruestbau.de'],
                     fail_silently=False
                 )  
         elif 'logutScaffold' in request.POST:
