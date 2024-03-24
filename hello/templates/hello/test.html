@@ -1,10 +1,9 @@
 {% extends 'hello/layout.html' %}
 
-{% block title %}Indexseite{% endblock %}
+{% block title %}Gerüstbauer - Freigabe{% endblock %}
 
 {% block content %}
-  <h1>{% if scaffoldID %}{{ scaffoldID }}{% endif %}.0 - Aufmaß Eingabe</h1>
-  <p>Bitte gib dein Aufmaß ein für das Gerüst {% if scaffoldID %}{{ scaffoldID }}{% endif %}.0 ein.</p>
+  <h1>FREIGABE VON GERÜSTBAUER</h1>
   {% include 'hello/interface/pages/freigabe.html' %}
 
   {% comment %} <ol id="todo-list" hx-get="http://127.0.0.1:8000/api" hx-trigger="load"></ol> {% endcomment %}

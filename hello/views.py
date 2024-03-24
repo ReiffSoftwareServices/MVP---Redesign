@@ -6,7 +6,7 @@ from django.utils import timezone
 
 from django.shortcuts import redirect
 from hello.forms import AnmeldungForm, ScaffoldLogoutForm, checkForm
-from hello.models import ScaffoldPosition, AdditionalServices, CostPosition, Contact, ChosenCostPosition
+from hello.models import Scaffold, ScaffoldPosition, AdditionalServices, CostPosition, Contact, ChosenCostPosition
 
 from django.views.generic import ListView
 
@@ -19,6 +19,7 @@ def aufmass(request, scaffoldID):
     context = {}
     context['scaffoldID'] = scaffoldID
     context['formCheck'] = checkForm()
+    context['scaffold'] = Scaffold.objects.get(ScaffoldID=scaffoldID)
     return render(request,'hello/test.html', context)
        
 def testModelHandling(request):
