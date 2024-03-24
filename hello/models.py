@@ -95,9 +95,9 @@ class Scaffold(models.Model):
     Equipment= models.ForeignKey(Equipment, on_delete=models.CASCADE, verbose_name= 'Equipment', blank= True, null= True, help_text="Equipment.")
     Level= models.ForeignKey(Level, on_delete=models.CASCADE, verbose_name= 'Ebene', blank= True, null= True, help_text="Level")
     Geoposition= models.ForeignKey(Geoposition, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Örtlichkeit', help_text="Örtlichkeit")
-    extraInfo1= models.ForeignKey(extraInfo1, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Zusatzinfo', help_text="Zusatzinfo")
-    extraInfo2= models.ForeignKey(extraInfo2, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Zusatzinfo', help_text="Zusatzinfo")
-    extraInfo3= models.ForeignKey(extraInfo3, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Zusatzinfo', help_text="Zusatzinfo")
+    extraInfo1= models.ForeignKey(extraInfo1, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Bauteil', help_text="Bauteil")
+    extraInfo2= models.ForeignKey(extraInfo2, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Koordinaten', help_text="Koordinaten")
+    extraInfo3= models.ForeignKey(extraInfo3, on_delete=models.CASCADE, blank= True, null= True, verbose_name= 'Innengerüst', help_text="Innengerüst")
     
     # Plan Data
     Length= models.DecimalField(max_digits= 7, decimal_places= 2, blank= True, null= True, verbose_name= 'Plan Länge', help_text="Länge in m")
