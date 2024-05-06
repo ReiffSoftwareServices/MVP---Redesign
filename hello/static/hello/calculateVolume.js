@@ -5,7 +5,8 @@ $(document).ready(function() {
     element.addEventListener('change', (event) => {
         // Hier deine Funktion zum Bearbeiten des Events
         document.getElementById('kubatur').innerHTML = "Kubatur: " + Math.round((document.getElementsByName('Length')[0].value * document.getElementsByName('Width')[0].value * document.getElementsByName('Height')[0].value) * 100) / 100 + " m³"
-    });
+        document.getElementById('Enhancementkubatur').innerHTML = "Kubatur: " + Math.round((document.getElementsByName('EnhancementLength')[0].value * document.getElementsByName('EnhancementWidth')[0].value * document.getElementsByName('EnhancementHeight')[0].value) * 100) / 100 + " m³"
+      });
     }
 
 

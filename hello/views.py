@@ -5,7 +5,7 @@ from django.utils.timezone import datetime
 from django.utils import timezone
 
 from django.shortcuts import redirect
-from hello.forms import AnmeldungForm, ScaffoldLogoutForm, checkForm
+from hello.forms import AnmeldungForm, ScaffoldLogoutForm, checkForm, ScaffoldEnhancmentForm
 from hello.models import Scaffold, ScaffoldPosition, AdditionalServices, CostPosition, Contact, ChosenCostPosition
 
 from django.views.generic import ListView
@@ -81,12 +81,27 @@ def registerScaffold(request):
         elif 'logutScaffold' in request.POST:
             form = ScaffoldLogoutForm(request.POST)
             scaffoldToLogout = request.POST.get('scaffoldPositionChoice')
-            # ToDo: Hier das Gerüst abmelden
             targetScaffoldPosition = ScaffoldPosition.objects.get(id=scaffoldToLogout)
             targetScaffoldPosition.Logout = request.POST.get('LogoutDate')
             targetContactId = request.POST.get('contactLogout') 
             targetScaffoldPosition.LogoutContact = Contact.objects.get(id=targetContactId)
             targetScaffoldPosition.save()
+        elif 'enhanceScaffold' in request.POST:
+            form = ScaffoldEnhancmentForm(request.POST)
+            if form.is_valid():  
+                scaffoldToEnhance = request.POST.get('scaffoldPositionChoice')
+                # create new scaffold position with same scaffold 
+                newScaffoldPosition = ScaffoldPosition()
+                newScaffoldPosition.Scaffold = ScaffoldPosition.objects.get(id=scaffoldToEnhance).Scaffold
+                newScaffoldPosition.Version = 1
+                newScaffoldPosition.Type = 2
+                newScaffoldPosition.save()
+  
+                newScaffoldPosition.SetupDate = request.POST.get('SetupDate')
+                if newScaffoldPosition.SetupDate == "" :
+                    newScaffoldPosition.SetupDate = None
+                newScaffoldPosition.Logout =  None
+                newScaffoldPosition.save()
         elif 'checkScaffold' in request.POST:
             form_data = request.POST
             selectedScaffold = form_data.get('scaffoldPositionChoice')
@@ -105,11 +120,23 @@ def registerScaffold(request):
                 targetChosenCostPosition.Height = int(selectedHeight[index] or "0")
                 print(CostPosition.objects.get(id=selectedCostPosition))
                 targetChosenCostPosition.save()
-        
+                newScaffoldPosition.save()
+                message = "Es wurde eine Erweiterung für ein Gerüst angemeldet. Bla bla. Hier bitte Aufmaß eingeben: " + request.META['HTTP_HOST'] + request.META['PATH_INFO'] + reverse('aufmass',args=[newScaffoldPosition.Scaffold.ScaffoldID])
+                message = message.replace("//", "/")
+                email = "jan.j.reiff@gmail.com"
+                name = "Neue Erweiterung eines Gerüstes wurde angemeldet!"
+                send_mail(
+                    name,
+                    message,
+                    'settings.EMAIL_HOST_USER',
+                    [email,'info@treverer-geruestbau.de'],
+                    fail_silently=False
+                )  
                   
     context['formAnmeldung'] = AnmeldungForm()
     context['formScaffoldLogout'] = ScaffoldLogoutForm()
     context['formCheck'] = checkForm()
+    context['formEnhancement'] = ScaffoldEnhancmentForm()
     return render(request, "hello/index.html", context)
         
 def about(request):

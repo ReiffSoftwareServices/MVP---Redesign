@@ -42,16 +42,31 @@ class ScaffoldLogoutForm(forms.Form):
     contactLogout = forms.ModelChoiceField(queryset=Contact.objects.all(),empty_label = "Abmelder auswählen .." , widget=forms.Select(attrs={'class':'form-control'}), help_text="Abmelder", label="Abmelder")
     scaffoldPositionChoice = forms.ModelChoiceField(queryset=ScaffoldPosition.objects.filter(Logout__isnull=True), empty_label="Gerüst zur Abmeldung auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Breich des Gerüstes", label="Gerüste") 
     LogoutDate = forms.DateField(required=False, initial=datetime.date.today().strftime('%Y-%m-%d'),  widget=forms.DateInput(attrs={'class':'form-control', 'type': 'date'}))
+ 
+class ScaffoldEnhancmentForm(forms.ModelForm):
+    class Meta:
+        model = ChosenCostPosition
+        fields = ("Length", "Width", "Height")
+        widgets = {     
+                    'Length': forms.NumberInput(attrs={'class':'form-control'}),
+                    'Width': forms.NumberInput(attrs={'class':'form-control'}),
+                    'Height': forms.NumberInput(attrs={'class':'form-control'}),       
+        }    
+    contactEnhancement = forms.ModelChoiceField(queryset=Contact.objects.all(),empty_label = "Anmelder für Erweiterung auswählen .." , widget=forms.Select(attrs={'class':'form-control'}), help_text="Abmelder", label="Abmelder")
+    scaffoldPositionChoice = forms.ModelChoiceField(queryset=ScaffoldPosition.objects.filter(Logout__isnull=True).exclude(Type=2), empty_label="Gerüst zur Erweiterung auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Breich des Gerüstes", label="Gerüste") 
+    EnhancementDate = forms.DateField(required=False, initial=datetime.date.today().strftime('%Y-%m-%d'),  widget=forms.DateInput(attrs={'class':'form-control', 'type': 'date'}))
     
     
 class checkForm(forms.ModelForm):
     class Meta:
         model = ChosenCostPosition
         fields = ("Length", "Width", "Height")
+        # add to the fields class "form control" and disable these fields
+        
         widgets = {     
-                'Length': forms.NumberInput(attrs={'class':'form-control'}),
-                'Width': forms.NumberInput(attrs={'class':'form-control'}),
-                'Height': forms.NumberInput(attrs={'class':'form-control'}),       
+                'Length': forms.NumberInput(attrs={'class':'form-control', 'disabled': True}),
+                'Width': forms.NumberInput(attrs={'class':'form-control', 'disabled': True}),
+                'Height': forms.NumberInput(attrs={'class':'form-control', 'disabled': True}),    
             }
     
     scaffoldPositionChoice = forms.ModelChoiceField(queryset=ScaffoldPosition.objects.all(), empty_label="Gerüst zur Aufmaßkontrolle auswählen..", widget=forms.Select(attrs={'class':'form-control'}), help_text="Breich des Gerüstes", label="Gerüste") 
